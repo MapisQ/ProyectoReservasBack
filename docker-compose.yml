@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  database:
+    container_name: database
+    image: postgres
+    environment:
+      POSTGRES_USER: admin_reserve
+      POSTGRES_PASSWORD: reservas
+      POSTGRES_DB: project_reserve
+      PGDATA: /data/postgres
+    volumes:
+      - database:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+  spring:
+    driver: bridge
+
+volumes:
+  database:
