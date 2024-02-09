@@ -1,6 +1,7 @@
 package org.adaschool.proyectoReservas;
 
 import org.adaschool.proyectoReservas.application.exception.ReservationException;
+import org.adaschool.proyectoReservas.application.lasting.EMessage;
 import org.adaschool.proyectoReservas.application.lasting.ERoles;
 import org.adaschool.proyectoReservas.application.lasting.EStateReservation;
 import org.adaschool.proyectoReservas.application.lasting.EStateTable;
@@ -99,16 +100,17 @@ public class TableServiceTests {
     }
 
     @Test
-    void findTableById(){
+    void findTableById() throws ReservationException {
         final Integer id = 1;
 
+        when(tableRepository.findById(id)).thenReturn(Optional.of(table));
         when(mapperT.toDto(table)).thenReturn(tableDto);
         try {
             TableDto result = tableService.findTableById(id);
 
             assertNotNull(result);
-            assertNotNull(bookingDto);
-            assertEquals(bookingDto,result);
+            assertNotNull(tableDto);
+            assertEquals(tableDto,result);
         }catch (ReservationException e) {
             e.printStackTrace();
         }

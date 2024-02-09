@@ -91,6 +91,8 @@ public class BookingServiceTests {
     @Test
     void findBookingById() {
         final Integer id = 1;
+
+        when(bookingRepository.findById(id)).thenReturn(Optional.of(booking));
         when(mapperB.toDto(booking)).thenReturn(bookingDto);
 
         try {

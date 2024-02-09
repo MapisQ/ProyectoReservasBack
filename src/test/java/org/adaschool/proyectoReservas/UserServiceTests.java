@@ -71,13 +71,13 @@ public class UserServiceTests {
     @Test
     void findUserById(){
         final Integer id=1;
-
+        when(userRepository.findById(id)).thenReturn(Optional.of(user));
         when(mapperU.toDto(user)).thenReturn(userDto);
         try{
             UserDto result = userService.findUserById(id);
+
             assertNotNull(result);
             assertNotNull(userDto);
-
             assertEquals(result,userDto);
         }catch (Exception e){
             e.printStackTrace();
