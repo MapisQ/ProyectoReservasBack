@@ -2,7 +2,7 @@ server:
   port: 8080
 spring:
   application:
-    name: project_reserve
+    name: proyecto-reservas
   datasource:
     password: reservas
     url: jdbc:postgresql://proyecto-reservas-db.cvk0k6sqy8k5.us-east-2.rds.amazonaws.com/proyecto_reservas
