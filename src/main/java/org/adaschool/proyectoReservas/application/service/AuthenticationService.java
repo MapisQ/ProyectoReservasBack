@@ -27,6 +27,7 @@ public record   AuthenticationService(
         userRepository.save(user);
         return jwtService.generateToken(user);
     }
+
     public String authenticate(AuthenticationDto authenticationDto){
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authenticationDto.email(),authenticationDto.password())

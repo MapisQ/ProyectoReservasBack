@@ -5,6 +5,7 @@ spring:
     name: proyecto-reservas
   datasource:
     password: reservas
+#    url: jdbc:postgresql://localhost:5432/project_reserve
     url: jdbc:postgresql://proyecto-reservas-db.cvk0k6sqy8k5.us-east-2.rds.amazonaws.com/proyecto_reservas
     username: postgres
     driver-class-name: org.postgresql.Driver

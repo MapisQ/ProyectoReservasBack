@@ -5,13 +5,12 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.adaschool.proyectoReservas.domain.entity.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
 
 import java.security.Key;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -30,6 +29,10 @@ public record JwtService(
         }
 
         private String generateToken(HashMap<String,Object> extraClaims, UserDetails userDetails) {
+                if(userDetails instanceof User){
+                        extraClaims.put("name", ((User) userDetails).getName() + " " + ((User) userDetails).getLastName());
+                        extraClaims.put("id_user", ((User) userDetails).getId());
+                }
                 return buildToken(extraClaims,userDetails,jwtExpiration);
         }
 

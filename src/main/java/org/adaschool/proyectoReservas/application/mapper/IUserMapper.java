@@ -4,10 +4,11 @@ import org.adaschool.proyectoReservas.application.mapper.base.IBaseMapper;
 import org.adaschool.proyectoReservas.domain.dto.UserDto;
 import org.adaschool.proyectoReservas.domain.entity.User;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingConstants;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel  = MappingConstants.ComponentModel.SPRING)
 public interface IUserMapper extends IBaseMapper {
 
     User toEntity(UserDto dto);
